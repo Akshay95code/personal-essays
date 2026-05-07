@@ -105,7 +105,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: border-color 0.2s ease, opacity 0.2s ease;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
       opacity: 0.5;
       padding: 0;
     }
@@ -113,6 +113,10 @@
     #theme-toggle:hover {
       border-color: #999;
       opacity: 1;
+    }
+
+    #theme-toggle:active {
+      transform: scale(0.85);
     }
 
     #theme-toggle svg {
@@ -171,6 +175,58 @@
     body.dark #theme-toggle svg {
       stroke: #666;
     }
+
+    /* Copy link button */
+    .copy-link-wrap {
+      margin-top: 40px;
+    }
+
+    #copy-link {
+      background: none;
+      border: 1px solid #d0cec9;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+      opacity: 0.5;
+      padding: 0;
+    }
+
+    #copy-link:hover {
+      border-color: #999;
+      opacity: 1;
+    }
+
+    #copy-link.pressed {
+      transform: scale(0.82);
+      opacity: 1;
+    }
+
+    #copy-link svg {
+      width: 15px;
+      height: 15px;
+      stroke: #888;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    body.dark #copy-link {
+      border-color: #2e2d2b;
+    }
+
+    body.dark #copy-link:hover {
+      border-color: #555;
+    }
+
+    body.dark #copy-link svg {
+      stroke: #666;
+    }
   </style>
 </head>
 <body>
@@ -201,6 +257,9 @@
     </div>
 
     <footer>Written by Akshay Sharma, Applied AI Product Manager</footer>
+    <div class="copy-link-wrap">
+      <button id="copy-link" aria-label="Copy link to clipboard"></button>
+    </div>
   </div>
   <button id="theme-toggle" aria-label="Toggle dark mode"></button>
 
@@ -240,6 +299,25 @@
 
     toggle.addEventListener('click', () => {
       setTheme(!body.classList.contains('dark'));
+    });
+
+    const copyBtn = document.getElementById('copy-link');
+    const linkIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </svg>`;
+    const checkIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>`;
+
+    copyBtn.innerHTML = linkIcon;
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href);
+      copyBtn.innerHTML = checkIcon;
+      copyBtn.classList.add('pressed');
+      setTimeout(() => copyBtn.classList.remove('pressed'), 150);
+      setTimeout(() => { copyBtn.innerHTML = linkIcon; }, 1600);
     });
   </script>
 </body>

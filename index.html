@@ -111,7 +111,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: border-color 0.2s ease, opacity 0.2s ease;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
       opacity: 0.5;
       padding: 0;
     }
@@ -119,6 +119,10 @@
     #theme-toggle:hover {
       border-color: #999;
       opacity: 1;
+    }
+
+    #theme-toggle:active {
+      transform: scale(0.85);
     }
 
     #theme-toggle svg {
@@ -197,9 +201,15 @@
           <span class="essay-list-date">May 2026</span>
         </a>
       </li>
+      <li>
+        <a href="the-empty-whiteboard.html">
+          <span class="essay-list-title">The Empty Whiteboard</span>
+          <span class="essay-list-date">May 2026</span>
+        </a>
+      </li>
     </ul>
 
-    <footer>Akshay Sharma &mdash; Applied AI Product Manager</footer>
+    <footer>Akshay Sharma, Applied AI Product Manager</footer>
   </div>
   <button id="theme-toggle" aria-label="Toggle dark mode"></button>
 
