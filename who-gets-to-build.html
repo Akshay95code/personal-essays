@@ -372,8 +372,55 @@
       fill: #c87878;
     }
 
+    /* Play button */
+    #play-btn {
+      background: none;
+      border: 1px solid #d0cec9;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+      opacity: 0.5;
+      padding: 0;
+    }
+
+    #play-btn:hover {
+      border-color: #999;
+      opacity: 1;
+    }
+
+    #play-btn:active {
+      transform: scale(0.85);
+    }
+
+    #play-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: #888;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    body.dark #play-btn {
+      border-color: #2e2d2b;
+    }
+
+    body.dark #play-btn:hover {
+      border-color: #555;
+    }
+
+    body.dark #play-btn svg {
+      stroke: #666;
+    }
+
     @media print {
-      #theme-toggle, #scroll-ring, .copy-link-wrap, .back-link, #more-essays, #heart-btn {
+      #theme-toggle, #scroll-ring, .copy-link-wrap, .back-link, #more-essays, #heart-btn, #play-btn {
         display: none !important;
       }
 
@@ -582,7 +629,9 @@
     <div class="copy-link-wrap">
       <button id="copy-link" aria-label="Copy link to clipboard"></button>
       <button id="print-btn" aria-label="Print essay"></button>
+      <button id="play-btn" aria-label="Listen to essay"></button>
     </div>
+    <audio id="essay-audio" src="audio/who-gets-to-build.wav"></audio>
   </div>
   <button id="theme-toggle" aria-label="Toggle dark mode"></button>
 
@@ -650,6 +699,22 @@
       <rect x="6" y="14" width="12" height="8"/>
     </svg>`;
     printBtn.addEventListener('click', () => window.print());
+
+    const playBtn = document.getElementById('play-btn');
+    const audio = document.getElementById('essay-audio');
+    const playIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5 3 19 12 5 21 5 3" stroke="#888" stroke-width="1.5" fill="none"/></svg>`;
+    const pauseIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/></svg>`;
+    playBtn.innerHTML = playIcon;
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.innerHTML = pauseIcon;
+      } else {
+        audio.pause();
+        playBtn.innerHTML = playIcon;
+      }
+    });
+    audio.addEventListener('ended', () => { playBtn.innerHTML = playIcon; });
 
     const heartBtn = document.getElementById('heart-btn');
     heartBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
