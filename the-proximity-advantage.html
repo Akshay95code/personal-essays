@@ -166,6 +166,8 @@
     /* Copy link button */
     .copy-link-wrap {
       margin-top: 40px;
+      display: flex;
+      gap: 12px;
     }
 
     #copy-link {
@@ -213,6 +215,77 @@
 
     body.dark #copy-link svg {
       stroke: #666;
+    }
+
+    /* Print button */
+    #print-btn {
+      background: none;
+      border: 1px solid #d0cec9;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+      opacity: 0.5;
+      padding: 0;
+    }
+
+    #print-btn:hover {
+      border-color: #999;
+      opacity: 1;
+    }
+
+    #print-btn:active {
+      transform: scale(0.85);
+    }
+
+    #print-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: #888;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    body.dark #print-btn {
+      border-color: #2e2d2b;
+    }
+
+    body.dark #print-btn:hover {
+      border-color: #555;
+    }
+
+    body.dark #print-btn svg {
+      stroke: #666;
+    }
+
+    @media print {
+      #theme-toggle, #scroll-ring, .copy-link-wrap, .back-link, #more-essays {
+        display: none !important;
+      }
+
+      body {
+        background: white !important;
+        color: black !important;
+        padding: 48px !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        animation: none !important;
+      }
+
+      .essay-heading { color: black !important; }
+      .essay-title { color: #555 !important; }
+      .essay p { color: black !important; }
+      .divider { background-color: #ccc !important; }
+      footer { color: #888 !important; margin-top: 32px !important; }
+      .essay p:first-child::first-letter { color: black !important; }
     }
 
     /* Scroll ring */
@@ -397,6 +470,7 @@
     <div id="more-essays"></div>
     <div class="copy-link-wrap">
       <button id="copy-link" aria-label="Copy link to clipboard"></button>
+      <button id="print-btn" aria-label="Print essay"></button>
     </div>
   </div>
   <button id="theme-toggle" aria-label="Toggle dark mode"></button>
@@ -457,6 +531,14 @@
       setTimeout(() => copyBtn.classList.remove('pressed'), 150);
       setTimeout(() => { copyBtn.innerHTML = linkIcon; }, 1600);
     });
+
+    const printBtn = document.getElementById('print-btn');
+    printBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="6 9 6 2 18 2 18 9"/>
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>`;
+    printBtn.addEventListener('click', () => window.print());
 
     const words = document.querySelector('.essay').innerText.trim().split(/\s+/).length;
     const mins = Math.ceil(words / 238);

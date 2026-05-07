@@ -17,6 +17,14 @@ When asked to write or add a new essay:
 5. Update the `essay-heading` h2 with the essay title. The essay title is the first thing after the back link — large, bold, prominent. Do not include the author name at the top; it already appears in the footer.
 6. Replace the essay body with the new content.
 7. Add a new `<li>` entry to the essay list in `index.html`, following the existing format: title on the left, month + year on the right.
+8. Update the `allEssays` array in the JavaScript of **every existing essay file** to include the new essay. This array powers the "More essays" suggestions at the bottom of each page. It looks like this and must be kept in sync across all files:
+
+```js
+const allEssays = [
+  { title: 'Essay Title', file: 'essay-slug.html', date: 'May 2026' },
+  ...
+];
+```
 
 ## Copy-link button
 
@@ -25,6 +33,14 @@ Each essay page has a small circular icon button below the footer that copies th
 ## Dark mode toggle
 
 The dark mode toggle button uses `#theme-toggle:active { transform: scale(0.85); }` with `transform 0.15s ease` in its transition to give it a press-in click feel. This must be present on every page.
+
+## Print button
+
+Each essay page has a small circular print button sitting next to the copy-link button at the bottom. Clicking it calls `window.print()`. A `@media print` stylesheet strips all UI chrome (nav, toggle, scroll ring, buttons, more essays section) and outputs just the essay title, date, body, and footer in clean black on white. The button uses `id="print-btn"` and is initialized via JavaScript alongside the copy-link button. It must be present on every essay page.
+
+## Scroll progress ring
+
+Each essay page has a small circular SVG progress ring fixed to the bottom-right corner (`id="scroll-ring"`). It fills clockwise as the reader scrolls. It is initialized in JavaScript at the bottom of the page script and requires no manual updates.
 
 ## Reading time
 
