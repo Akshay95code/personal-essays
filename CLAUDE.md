@@ -10,5 +10,6 @@ When asked to write or add a new essay:
 2. Use `vibe-coding-2041.html` as the template — copy its structure exactly, including the dark mode toggle and "← All essays" back link.
 3. Update the `<title>` tag to reflect the new essay title.
 4. Update the `essay-title` label with the correct month and year.
-5. Replace the essay body with the new content.
-6. Add a new `<li>` entry to the essay list in `index.html`, following the existing format: title on the left, month + year on the right.
+5. Update the `essay-heading` h2 with the essay title. The essay title is the first thing after the back link — large, bold, prominent. Do not include the author name at the top; it already appears in the footer.
+6. Replace the essay body with the new content.
+7. Add a new `<li>` entry to the essay list in `index.html`, following the existing format: title on the left, month + year on the right.
