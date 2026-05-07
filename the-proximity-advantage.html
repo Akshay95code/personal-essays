@@ -214,6 +214,71 @@
     body.dark #copy-link svg {
       stroke: #666;
     }
+
+    /* More essays */
+    #more-essays {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid #e8e6e0;
+    }
+
+    .more-essays-label {
+      font-size: 0.72rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+
+    .more-essays-list {
+      list-style: none;
+    }
+
+    .more-essays-list li {
+      margin-bottom: 16px;
+    }
+
+    .more-essays-list a {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      text-decoration: none;
+      color: inherit;
+      gap: 24px;
+    }
+
+    .more-essays-list a:hover .more-essays-title {
+      color: #000;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .more-essays-title {
+      font-size: 1.0rem;
+      color: #2c2c2c;
+      line-height: 1.5;
+    }
+
+    .more-essays-date {
+      font-size: 0.75rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #aaa;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+
+    body.dark #more-essays {
+      border-top-color: #2e2d2b;
+    }
+
+    body.dark .more-essays-title {
+      color: #c8c5bf;
+    }
+
+    body.dark .more-essays-list a:hover .more-essays-title {
+      color: #f0ede8;
+    }
   </style>
 </head>
 <body>
@@ -244,6 +309,7 @@
     </div>
 
     <footer>Written by Akshay Sharma, Applied AI Product Manager</footer>
+    <div id="more-essays"></div>
     <div class="copy-link-wrap">
       <button id="copy-link" aria-label="Copy link to clipboard"></button>
     </div>
@@ -306,6 +372,29 @@
       setTimeout(() => copyBtn.classList.remove('pressed'), 150);
       setTimeout(() => { copyBtn.innerHTML = linkIcon; }, 1600);
     });
+
+    const words = document.querySelector('.essay').innerText.trim().split(/\s+/).length;
+    const mins = Math.ceil(words / 238);
+    document.querySelector('.essay-title').textContent += ' · ' + mins + ' min read';
+
+    const allEssays = [
+      { title: 'The One-Shot Race', file: 'one-shot-race.html', date: 'May 2026' },
+      { title: 'The Proximity Advantage', file: 'the-proximity-advantage.html', date: 'May 2026' },
+      { title: 'Who Gets to Build', file: 'who-gets-to-build.html', date: 'May 2026' },
+      { title: 'Vibe Coding, 2041', file: 'vibe-coding-2041.html', date: 'May 2026' },
+      { title: 'The Empty Whiteboard', file: 'the-empty-whiteboard.html', date: 'May 2026' },
+    ];
+    const current = window.location.pathname.split('/').pop();
+    const others = allEssays.filter(e => e.file !== current);
+    for (let i = others.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [others[i], others[j]] = [others[j], others[i]];
+    }
+    const picks = others.slice(0, 2);
+    document.getElementById('more-essays').innerHTML =
+      '<p class="more-essays-label">More essays</p><ul class="more-essays-list">' +
+      picks.map(e => '<li><a href="' + e.file + '"><span class="more-essays-title">' + e.title + '</span><span class="more-essays-date">' + e.date + '</span></a></li>').join('') +
+      '</ul>';
   </script>
 </body>
 </html>

@@ -25,3 +25,15 @@ Each essay page has a small circular icon button below the footer that copies th
 ## Dark mode toggle
 
 The dark mode toggle button uses `#theme-toggle:active { transform: scale(0.85); }` with `transform 0.15s ease` in its transition to give it a press-in click feel. This must be present on every page.
+
+## Reading time
+
+Each essay page displays a reading time estimate appended to the `essay-title` label (e.g. "May 2026 · 4 min read"). It is calculated in JavaScript at the bottom of the page script, after the copy-link button is initialized:
+
+```js
+const words = document.querySelector('.essay').innerText.trim().split(/\s+/).length;
+const mins = Math.ceil(words / 238);
+document.querySelector('.essay-title').textContent += ' · ' + mins + ' min read';
+```
+
+This must be included on every essay page.
