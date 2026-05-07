@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The One-Shot Race · Akshay Sharma</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fafaf8;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 24px;
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #aaa;
+      text-decoration: none;
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: #666;
+    }
+
+    h1 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #999;
+      margin-bottom: 40px;
+    }
+
+    .essay-heading {
+      font-family: 'Georgia', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0d0d0d;
+      margin-bottom: 6px;
+    }
+
+    .essay-title {
+      font-size: 0.75rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    .essay p {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: #2c2c2c;
+      margin-bottom: 1.4em;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background-color: #d0cec9;
+      margin-bottom: 48px;
+    }
+
+    footer {
+      margin-top: 64px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      color: #aaa;
+      letter-spacing: 0.5px;
+    }
+
+    /* Dark mode toggle */
+    #theme-toggle {
+      position: fixed;
+      top: 28px;
+      right: 28px;
+      background: none;
+      border: 1px solid #d0cec9;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+      opacity: 0.5;
+      padding: 0;
+    }
+
+    #theme-toggle:hover {
+      border-color: #999;
+      opacity: 1;
+    }
+
+    #theme-toggle:active {
+      transform: scale(0.85);
+    }
+
+    #theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      stroke: #888;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s ease;
+    }
+
+    /* Dark mode overrides */
+    body.dark {
+      background-color: #111110;
+      color: #e8e6e1;
+    }
+
+    body.dark h1 {
+      color: #555;
+    }
+
+    body.dark .essay-heading {
+      color: #f0ede8;
+    }
+
+    body.dark .essay p {
+      color: #c8c5bf;
+    }
+
+    body.dark .divider {
+      background-color: #2e2d2b;
+    }
+
+    body.dark footer {
+      color: #555;
+    }
+
+    body.dark .back-link {
+      color: #555;
+    }
+
+    body.dark .back-link:hover {
+      color: #999;
+    }
+
+    body.dark #theme-toggle {
+      border-color: #2e2d2b;
+    }
+
+    body.dark #theme-toggle:hover {
+      border-color: #555;
+    }
+
+    body.dark #theme-toggle svg {
+      stroke: #666;
+    }
+
+    /* Copy link button */
+    .copy-link-wrap {
+      margin-top: 40px;
+    }
+
+    #copy-link {
+      background: none;
+      border: 1px solid #d0cec9;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+      opacity: 0.5;
+      padding: 0;
+    }
+
+    #copy-link:hover {
+      border-color: #999;
+      opacity: 1;
+    }
+
+    #copy-link.pressed {
+      transform: scale(0.82);
+      opacity: 1;
+    }
+
+    #copy-link svg {
+      width: 15px;
+      height: 15px;
+      stroke: #888;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    body.dark #copy-link {
+      border-color: #2e2d2b;
+    }
+
+    body.dark #copy-link:hover {
+      border-color: #555;
+    }
+
+    body.dark #copy-link svg {
+      stroke: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← All essays</a>
+
+    <h2 class="essay-heading">The One-Shot Race</h2>
+    <div class="divider"></div>
+
+    <div class="essay-title">May 2026</div>
+
+    <div class="essay">
+      <p>
+        Something remarkable happened in early 2026. Google quietly shut down Firebase Studio, a product it had launched with great fanfare at Google Cloud Next just eleven months earlier, and folded its ambitions into AI Studio instead. The reason was simple: AI Studio could already do more, faster. In the time it took Google to ship, iterate, and rebrand an entire developer platform, the whole category had moved underneath it.
+      </p>
+      <p>
+        That is the pace of the one-shot race. Every major technology company in the world is now trying to answer the same question: how quickly can you turn a plain English description into a working application? Not a prototype. Not a mockup. A real, deployed, live piece of software with a database, authentication, and payment processing baked in. Lovable, which raised $330 million at a $6.6 billion valuation in December 2025, backed by Nvidia and Salesforce, can do this today. Their agent mode, switched on by default since July 2025, does not just write code. It explores your codebase autonomously, searches the web for solutions, and debugs its own errors without being asked. Anthropic's Claude Code is so capable that Anthropic itself now uses it to write the majority of its own production code. Google's AI Studio absorbed Antigravity, a full-stack coding agent, and turned its browser into a prompt-to-production environment. The race is not coming. It is already here, and the lap times are getting faster every month.
+      </p>
+      <p>
+        The celebration is genuine, and I want to sit with it for a moment before the concerns. For anyone who has ever had a sharp product idea and been told to wait six months for an engineering sprint, this is liberation. Y Combinator reported that a quarter of its Winter 2025 startups had codebases that were 95% AI-generated. One company, faced with a SaaS renewal priced at double what they currently paid, had an engineering lead vibe-code a working replacement in a single afternoon. That is not a novelty. That is a structural shift in what software costs to build, and it opens the door for a generation of builders who were previously locked out.
+      </p>
+      <p>
+        But two groups should be watching all of this with clear eyes, not just excitement.
+      </p>
+      <p>
+        The first is investors in SaaS companies. In February 2026, roughly $300 billion in market value evaporated from software stocks in a single trading session, in what observers are now calling the SaaSpocalypse. The underlying fear is not complicated: if AI agents can now build the thing a SaaS tool was designed to do, why keep paying the subscription? Seat-based pricing, the model that powered a generation of software businesses, has already fallen from 21% to 15% of SaaS companies in just twelve months. The businesses most at risk are not the great ones. Salesforce, Notion, the platforms with deep network effects and irreplaceable integrations will survive. The ones in trouble are the thin ones: tools that solved one narrow workflow, charged per seat, and never built a meaningful moat. Those are the products being vibe-coded out of existence, one weekend project at a time, by the very customers who used to renew without question.
+      </p>
+      <p>
+        The second group is software engineers, and specifically those early in their careers. In the first quarter of 2026, nearly 80,000 tech workers were laid off, with close to half of those cuts explicitly attributed to AI by the companies making them. Microsoft's CEO disclosed that 30% of the company's code is now AI-written, while its layoffs targeted software engineers at a disproportionate rate. Freshworks cut 11% of its global workforce and credited AI directly, noting that more than half of its code is now machine-generated. New software engineering job postings declined 15% in the first two months of this year alone. Employment for developers aged 22 to 25 has fallen nearly 20% from its peak. The junior developer role, historically the on-ramp into the profession, is being hollowed out faster than anyone planned for, and the people most affected are the ones who had the least runway to adapt.
+      </p>
+      <p>
+        None of this means software engineering as a career is ending. It means the shape of it is changing, quickly and without much warning for the people inside it. The engineers who thrive in this era will be those who know how to direct agents well, review what they produce critically, and catch the subtle failures that look like successes until they hit production. A July 2025 study found that AI-generated code often works initially but creates compounding debugging problems as projects scale. That gap between "it runs" and "it holds up" is where experienced human judgment still lives. The skill is shifting from writing code to reading it carefully. That is not a small transition for someone three years into their career who was trained primarily to write it.
+      </p>
+      <p>
+        The one-shot race is one of the most genuinely impressive things happening in technology right now. The companies building these tools are compressing years of development work into single prompts, and that is worth celebrating. But compressed timelines do not compress consequences. The disruption is real, and it is landing on real people today, not in some abstract future. Holding both of those things at once, the excitement and the concern, is not a contradiction. It is just honesty.
+      </p>
+    </div>
+
+    <footer>Written by Akshay Sharma, Applied AI Product Manager</footer>
+    <div class="copy-link-wrap">
+      <button id="copy-link" aria-label="Copy link to clipboard"></button>
+    </div>
+  </div>
+  <button id="theme-toggle" aria-label="Toggle dark mode"></button>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    const sunIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4"/>
+      <line x1="12" y1="2" x2="12" y2="5"/>
+      <line x1="12" y1="19" x2="12" y2="22"/>
+      <line x1="2" y1="12" x2="5" y2="12"/>
+      <line x1="19" y1="12" x2="22" y2="12"/>
+      <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/>
+      <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+      <line x1="19.78" y1="4.22" x2="17.66" y2="6.34"/>
+      <line x1="6.34" y1="17.66" x2="4.22" y2="19.78"/>
+    </svg>`;
+
+    const moonIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>`;
+
+    function setTheme(dark) {
+      if (dark) {
+        body.classList.add('dark');
+        toggle.innerHTML = sunIcon;
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark');
+        toggle.innerHTML = moonIcon;
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    setTheme(localStorage.getItem('theme') === 'dark');
+
+    toggle.addEventListener('click', () => {
+      setTheme(!body.classList.contains('dark'));
+    });
+
+    const copyBtn = document.getElementById('copy-link');
+    const linkIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </svg>`;
+    const checkIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>`;
+
+    copyBtn.innerHTML = linkIcon;
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href);
+      copyBtn.innerHTML = checkIcon;
+      copyBtn.classList.add('pressed');
+      setTimeout(() => copyBtn.classList.remove('pressed'), 150);
+      setTimeout(() => { copyBtn.innerHTML = linkIcon; }, 1600);
+    });
+  </script>
+</body>
+</html>

@@ -9,7 +9,8 @@
       "PowerShell(git push *)",
       "Bash(start index.html)",
       "Bash(gh api *)",
-      "PowerShell(gh api *)"
+      "PowerShell(gh api *)",
+      "WebSearch"
     ]
   }
 }
