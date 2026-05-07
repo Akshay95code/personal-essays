@@ -215,6 +215,42 @@
       stroke: #666;
     }
 
+    /* Scroll ring */
+    #scroll-ring {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 36px;
+      height: 36px;
+    }
+
+    #scroll-ring svg {
+      width: 36px;
+      height: 36px;
+      transform: rotate(-90deg);
+    }
+
+    #scroll-ring .ring-track {
+      fill: none;
+      stroke: #d0cec9;
+      stroke-width: 1.5;
+    }
+
+    #scroll-ring .ring-progress {
+      fill: none;
+      stroke: #888;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    body.dark #scroll-ring .ring-track {
+      stroke: #2e2d2b;
+    }
+
+    body.dark #scroll-ring .ring-progress {
+      stroke: #666;
+    }
+
     /* More essays */
     #more-essays {
       margin-top: 48px;
@@ -282,6 +318,12 @@
   </style>
 </head>
 <body>
+  <div id="scroll-ring">
+    <svg viewBox="0 0 36 36">
+      <circle class="ring-track" cx="18" cy="18" r="14"/>
+      <circle class="ring-progress" cx="18" cy="18" r="14"/>
+    </svg>
+  </div>
   <div class="container">
     <a href="index.html" class="back-link">← All essays</a>
 
@@ -395,6 +437,18 @@
       '<p class="more-essays-label">More essays</p><ul class="more-essays-list">' +
       picks.map(e => '<li><a href="' + e.file + '"><span class="more-essays-title">' + e.title + '</span><span class="more-essays-date">' + e.date + '</span></a></li>').join('') +
       '</ul>';
+
+    const ringProgress = document.querySelector('#scroll-ring .ring-progress');
+    const circumference = 2 * Math.PI * 14;
+    ringProgress.style.strokeDasharray = circumference;
+    ringProgress.style.strokeDashoffset = circumference;
+    function updateRing() {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? window.scrollY / docHeight : 0;
+      ringProgress.style.strokeDashoffset = circumference * (1 - pct);
+    }
+    window.addEventListener('scroll', updateRing);
+    updateRing();
   </script>
 </body>
 </html>
