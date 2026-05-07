@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\95aks\\\\Projects\\\\personal-essays\\\\audio\\\\who-gets-to-build.wav\"\\).Length)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}
