@@ -6,7 +6,10 @@
       "PowerShell(git config *)",
       "PowerShell(git commit *)",
       "PowerShell(git remote *)",
-      "PowerShell(git push *)"
+      "PowerShell(git push *)",
+      "Bash(start index.html)",
+      "Bash(gh api *)",
+      "PowerShell(gh api *)"
     ]
   }
 }
