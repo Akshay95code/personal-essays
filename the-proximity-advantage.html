@@ -251,6 +251,49 @@
       stroke: #666;
     }
 
+    /* Text selection */
+    ::selection {
+      background-color: #e8e4dc;
+      color: #1a1a1a;
+    }
+
+    body.dark ::selection {
+      background-color: #3a3835;
+      color: #e8e6e1;
+    }
+
+    /* Drop cap */
+    .essay p:first-child::first-letter {
+      font-size: 3.6rem;
+      font-weight: 700;
+      float: left;
+      line-height: 0.8;
+      margin-right: 6px;
+      margin-top: 5px;
+      font-family: 'Georgia', serif;
+      color: #0d0d0d;
+    }
+
+    body.dark .essay p:first-child::first-letter {
+      color: #f0ede8;
+    }
+
+    /* Page fade-in */
+    @keyframes fadein {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      animation: fadein 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
     /* More essays */
     #more-essays {
       margin-top: 48px;
