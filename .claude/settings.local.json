@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(git init *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "PowerShell(git config *)",
+      "PowerShell(git commit *)",
+      "PowerShell(git remote *)",
+      "PowerShell(git push *)"
     ]
   }
 }

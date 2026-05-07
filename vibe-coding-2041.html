@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akshay Sharma</title>
+  <title>Vibe Coding, 2041 — Akshay Sharma</title>
   <style>
     * {
       margin: 0;
@@ -27,6 +27,21 @@
       width: 100%;
     }
 
+    .back-link {
+      display: inline-block;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #aaa;
+      text-decoration: none;
+      margin-bottom: 32px;
+    }
+
+    .back-link:hover {
+      color: #666;
+    }
+
     h1 {
       font-family: 'Georgia', serif;
       font-size: 2.2rem;
@@ -36,57 +51,27 @@
       color: #0d0d0d;
     }
 
-    .divider {
-      width: 40px;
-      height: 2px;
-      background-color: #d0cec9;
-      margin-bottom: 48px;
-    }
-
-    .section-label {
+    .essay-title {
       font-size: 0.75rem;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: #888;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
-    .essay-list {
-      list-style: none;
-    }
-
-    .essay-list li {
-      margin-bottom: 20px;
-    }
-
-    .essay-list a {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      text-decoration: none;
-      color: inherit;
-      gap: 24px;
-    }
-
-    .essay-list a:hover .essay-list-title {
-      color: #000;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .essay-list-title {
-      font-size: 1.05rem;
+    .essay p {
+      font-size: 1.08rem;
+      line-height: 1.85;
       color: #2c2c2c;
-      line-height: 1.5;
+      margin-bottom: 1.4em;
     }
 
-    .essay-list-date {
-      font-size: 0.75rem;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: #aaa;
-      white-space: nowrap;
-      letter-spacing: 0.5px;
+    .divider {
+      width: 40px;
+      height: 2px;
+      background-color: #d0cec9;
+      margin-bottom: 48px;
     }
 
     footer {
@@ -142,20 +127,24 @@
       color: #f0ede8;
     }
 
+    body.dark .essay p {
+      color: #c8c5bf;
+    }
+
     body.dark .divider {
       background-color: #2e2d2b;
     }
 
-    body.dark .essay-list-title {
-      color: #c8c5bf;
-    }
-
-    body.dark .essay-list a:hover .essay-list-title {
-      color: #f0ede8;
-    }
-
     body.dark footer {
       color: #555;
+    }
+
+    body.dark .back-link {
+      color: #555;
+    }
+
+    body.dark .back-link:hover {
+      color: #999;
     }
 
     body.dark #theme-toggle {
@@ -173,21 +162,32 @@
 </head>
 <body>
   <div class="container">
+    <a href="index.html" class="back-link">← All essays</a>
+
     <h1>Akshay Sharma</h1>
     <div class="divider"></div>
 
-    <p class="section-label">Essays</p>
+    <div class="essay-title">Essay &mdash; May 2026</div>
 
-    <ul class="essay-list">
-      <li>
-        <a href="vibe-coding-2041.html">
-          <span class="essay-list-title">Vibe Coding, 2041</span>
-          <span class="essay-list-date">May 2026</span>
-        </a>
-      </li>
-    </ul>
+    <div class="essay">
+      <p>
+        Fifteen years ago, if you told someone that a product manager with no CS degree would be shipping working software before lunch, they would have laughed you out of the standup. Today, I do exactly that. And I think we are still only in the opening credits of this story.
+      </p>
+      <p>
+        Vibe coding — describing what you want in plain English and watching an AI agent build it — feels like magic right now. But magic is just technology that hasn't been normalized yet. By 2041, I believe every knowledge worker will have an AI coding agent the way every knowledge worker today has a spreadsheet. It won't be special. It will just be how work gets done.
+      </p>
+      <p>
+        The shift I am most excited about is not technical — it is cultural. We are going to stop gatekeeping who gets to build things. Right now, the best product ideas don't always come from people who can code. They come from nurses, teachers, small business owners, and yes, product managers who are close to real problems. Vibe coding closes that gap. The person with the sharpest insight into a problem will finally be the person who can solve it, directly, without waiting in a sprint queue.
+      </p>
+      <p>
+        Will there still be software engineers in 2041? Absolutely. But they will operate more like architects than bricklayers — setting the foundations, reviewing what agents produce, and solving the genuinely hard problems that still require deep human judgment. The bar will shift from writing code to thinking clearly.
+      </p>
+      <p>
+        That is a world I want to live in. A world where the bottleneck to a great idea is no longer whether you know Python, but whether you asked the right question. Turns out, that is a skill anyone can learn.
+      </p>
+    </div>
 
-    <footer>Akshay Sharma &mdash; Applied AI Product Manager</footer>
+    <footer>Written by Akshay Sharma &mdash; Applied AI Product Manager</footer>
   </div>
   <button id="theme-toggle" aria-label="Toggle dark mode"></button>
 
