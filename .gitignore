@@ -1,8 +1,6 @@
 # Environment variables — never commit this
 .env
 
-# Audio files — large binaries, no need in git
-audio/
 
 # Node
 node_modules/
