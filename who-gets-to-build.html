@@ -372,6 +372,26 @@
       fill: #c87878;
     }
 
+    /* Audio strip */
+    #audio-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .audio-label {
+      font-size: 0.7rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #aaa;
+    }
+
+    body.dark .audio-label {
+      color: #555;
+    }
+
     /* Play button */
     #play-btn {
       background: none;
@@ -420,7 +440,7 @@
     }
 
     @media print {
-      #theme-toggle, #scroll-ring, .copy-link-wrap, .back-link, #more-essays, #heart-btn, #play-btn {
+      #theme-toggle, #scroll-ring, .copy-link-wrap, .back-link, #more-essays, #heart-btn, #audio-strip {
         display: none !important;
       }
 
@@ -602,6 +622,10 @@
     <div class="divider"></div>
 
     <div class="essay-title">March 2026</div>
+    <div id="audio-strip">
+      <button id="play-btn" aria-label="Listen to essay"></button>
+      <span class="audio-label">Listen</span>
+    </div>
 
     <div class="essay">
       <p>
@@ -629,7 +653,6 @@
     <div class="copy-link-wrap">
       <button id="copy-link" aria-label="Copy link to clipboard"></button>
       <button id="print-btn" aria-label="Print essay"></button>
-      <button id="play-btn" aria-label="Listen to essay"></button>
     </div>
     <audio id="essay-audio" src="audio/who-gets-to-build.wav"></audio>
   </div>
